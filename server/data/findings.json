@@ -1,0 +1,53 @@
+[
+  {
+    "id": "finding_1784663686660_jm6gj9",
+    "status": "approved_for_export",
+    "fetchedAt": "2026-07-21T19:54:46.660Z",
+    "exportedAt": "2026-07-21T20:03:19.958Z",
+    "title": "Challenges in developing broad-spectrum viral attachment inhibitors targeting heparan sulfates and sialic acids.",
+    "authors": "Cagno V.",
+    "source": "PubMed (via Europe PMC)",
+    "url": "https://doi.org/10.1128/jvi.00139-26",
+    "publishedDate": "2026-03-02",
+    "target": "Cell surface glycans (heparan sulfates and sialic acids) as viral attachment factors",
+    "method": "Review and synthesis of decades of approaches including enzymatic/genetic glycan removal, glycan masking, engineered decoy receptors, and multivalent inhibitors tested against broad-spectrum viral attachment",
+    "hypothesis": "Blocking conserved glycan-mediated viral attachment interactions would yield broad-spectrum antivirals effective enough for clinical use",
+    "outcomeSummary": "Despite promising in vitro results across multiple independent strategies over decades, no glycan-targeted attachment inhibitor has advanced to routine clinical use.",
+    "whyItFailed": "Insufficient potency in vivo, off-target effects from targeting ubiquitous host glycans, risk of viral resistance, and practical challenges with administration routes",
+    "reuseAngle": "Future antiviral attachment-inhibitor programs targeting host glycans should design early for potency, selectivity, and delivery constraints identified here, rather than repeating in vitro-only validation that historically failed to translate clinically."
+  },
+  {
+    "id": "finding_1784664175970_gcos8g",
+    "status": "approved_for_export",
+    "fetchedAt": "2026-07-21T20:02:55.970Z",
+    "exportedAt": "2026-07-21T20:04:23.212Z",
+    "title": "Repurposing ALK inhibitors as influenza and corona virus antivirals targeting lymphocyte tyrosine kinase (LTK).",
+    "authors": "Tjärnhage E, Våtsveen TK, Raki M, Nemazee D, Farhan H, Munthe L, Grodeland G.",
+    "source": "PubMed (via Europe PMC)",
+    "url": "https://doi.org/10.1016/j.virusres.2026.199759",
+    "publishedDate": "2026-06-09",
+    "target": "LTK (lymphocyte tyrosine kinase), ER-to-Golgi trafficking host pathway exploited by influenza and SARS-CoV-2",
+    "method": "Screened multiple repurposed ALK inhibitors (ceritinib, crizotinib, entrectinib, ensartinib, brigatinib, alectinib, lorlatinib) for in vitro antiviral activity against influenza and SARS-CoV-2, then tested a subset in vivo using lethal viral challenge mouse models",
+    "hypothesis": "Since these ALK inhibitors also inhibit LTK, and LTK is required for ER-to-Golgi trafficking exploited by viruses, all tested LTK-inhibiting ALK inhibitors were expected to reduce viral load in vitro and protect against lethal viral challenge in vivo",
+    "outcomeSummary": "Lorlatinib failed to inhibit influenza or SARS-CoV-2 in vitro despite being an ALK/LTK inhibitor, unlike the other six compounds tested; additionally, only some of the in vitro-active compounds (crizotinib, brigatinib, ceritinib) showed protective effects in vivo, implying others that worked in vitro did not translate to in vivo protection or were not effective/tested successfully in vivo.",
+    "whyItFailed": "Not fully explained in the abstract; likely due to differences in LTK-inhibitory potency/selectivity, pharmacokinetics, or off-target activity among the ALK inhibitors, with lorlatinib potentially lacking sufficient LTK inhibition or relevant off-target antiviral activity compared to the other compounds",
+    "reuseAngle": "This highlights that structurally similar host-targeted kinase inhibitors can have divergent antiviral efficacy despite shared nominal target inhibition, so future host-targeted antiviral screens should systematically test multiple compounds within a drug class and confirm in vitro hits with in vivo validation rather than assuming class-wide efficacy from a shared molecular target."
+  },
+  {
+    "id": "finding_1784664175970_xl6fpd",
+    "status": "rejected",
+    "fetchedAt": "2026-07-21T20:02:55.970Z",
+    "exportedAt": null,
+    "title": "CC-90009, a Cereblon E3 Ligase Modulator, Exhibits Antiviral Efficacy Against JEV In Vitro and In Vivo via Targeted Degradation of GSPT1 and Viral NS5 Protein.",
+    "authors": "He Z, Chen Y, Xia B, Cheng Z, Zhao P, Qi Z, Zhu Y.",
+    "source": "PubMed (via Europe PMC)",
+    "url": "https://doi.org/10.3390/pharmaceutics17121524",
+    "publishedDate": "2025-11-27",
+    "target": "Targeted protein degraders (TPDs)/CRBN E3 ligase modulators screened for anti-JEV activity",
+    "method": "Screening of five distinct targeted protein degrader compounds for antiviral activity against JEV in human neuroblastoma SH-SY5Y cells",
+    "hypothesis": "Multiple CRBN-based protein degraders would show antiviral efficacy against JEV, given the class's known ability to induce degradation of host factors relevant to viral replication",
+    "outcomeSummary": "Only one of the five TPDs tested (CC-90009) significantly inhibited JEV infection; the other four degraders showed no meaningful antiviral effect in this cell model",
+    "whyItFailed": "The inactive TPDs likely lacked the specific molecular glue activity needed to engage GSPT1 (or an equivalent host factor) in a way that disrupts the viral NS5 complex, suggesting target/mechanism specificity rather than general degrader potency determines antiviral effect",
+    "reuseAngle": "Future antiviral TPD screens should note that broad CRBN-modulator activity does not guarantee antiviral efficacy, so early-stage screens should prioritize compounds validated to engage specific host-viral protein complexes like GSPT1-NS5 rather than assuming class-wide effects."
+  }
+]

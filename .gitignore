@@ -1,0 +1,10 @@
+# Never commit real secrets
+.env
+server/.env
+
+# Dependencies
+node_modules/
+server/node_modules/
+
+# OS clutter
+.DS_Store

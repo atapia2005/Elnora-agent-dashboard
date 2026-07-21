@@ -1,0 +1,109 @@
+[
+  {
+    "id": "labguru",
+    "name": "Labguru Assistant (Cenevo)",
+    "product": "AI assistant embedded in the Labguru ELN/LIMS platform",
+    "category": "AI copilot embedded in existing ELN/LIMS",
+    "baseline": {
+      "summary": "Labguru Assistant remains embedded directly into the Labguru ELN/LIMS platform, but the parent company has undergone a major corporate change: BioData's Labguru business combined with Titian Software (both properties of Digital Science, backed by Battery Ventures) to form a new unified entity now branded 'Cenevo,' with Keith Hale appointed Group CEO in January 2025. Under this new branding, Cenevo relaunched/reintroduced the Labguru Assistant in September 2025 as an AI-enabled extension for real-time, in-platform scientific support.",
+      "keyFeatures": [
+        "Contextual suggestions on concentrations, incubation times, and controls, generating structured protocols ready to save within Labguru",
+        "Real-time support for protocol deviations, equipment issues, and unexpected data",
+        "Explainable, traceable, fully auditable insights aimed at reproducibility and regulatory-grade compliance",
+        "Can search a lab's entire workspace (ELN entries, inventory, protocols) and connect to trusted external databases for deeper scientific insights",
+        "Marketed as 'purpose-built for the complexity of life science' rather than a generic chatbot, always-on and always-in-context"
+      ],
+      "recentNews": "The most significant recent development is corporate consolidation: Labguru/BioData merged with Titian Software under Battery Ventures ownership to form 'Cenevo,' a combined tier-1 lab-management/sample-management platform (Keith Hale named Group CEO, Jan 2025); Cenevo then issued a September 2025 press release relaunching Labguru Assistant, emphasizing it is 'not a separate system or tool' but always-on, in-context, and accountable AI embedded across the platform, now reportedly serving 950+ customers (including 8 of the top 10 pharma companies) and 45,000+ scientist users worldwide.",
+      "fundingKnown": null,
+      "sources": [
+        [
+          "Labguru Assistant product page",
+          "https://www.labguru.com/labguru-assistant"
+        ],
+        [
+          "Cenevo Debuts AI Assistant for Life Science Research",
+          "https://www.cenevo.com/press/cenevo-launches-ai-enabled-assistant-to-transform-life-science-research"
+        ],
+        [
+          "Cenevo Launches Labguru Assistant (Biopharma Boardroom)",
+          "https://biopharmaboardroom.com/news/13/3785/cenevo-launches-labguru-assistant-to-bring-ai-driven-support-directly-into-scientists-daily-work.html"
+        ],
+        [
+          "Labguru press releases page",
+          "https://www.labguru.com/press"
+        ],
+        [
+          "Cenevo (previously Titian Software UK and Labguru) - Crunchbase",
+          "https://www.crunchbase.com/organization/biodata"
+        ],
+        [
+          "Labguru (BioData) Revenue 2025 - Latka",
+          "https://getlatka.com/companies/labguru.com"
+        ]
+      ]
+    },
+    "pendingUpdate": null,
+    "history": [
+      {
+        "action": "refreshed",
+        "at": "2026-07-21T22:16:22.303Z",
+        "changeCount": 3
+      },
+      {
+        "action": "approved",
+        "at": "2026-07-21T22:17:25.470Z"
+      }
+    ]
+  },
+  {
+    "id": "rcop",
+    "name": "R-COP (ThinkBio.Ai)",
+    "product": "R-COP, an AI research copilot for biomedical R&D",
+    "category": "Standalone AI copilot spanning discovery-to-trial workflows",
+    "baseline": {
+      "summary": "R-COP is ThinkBio.Ai's AI-powered platform unifying experimental design, protocol generation, clinical study planning, and lab operations analytics into one system, aimed at eliminating manual bottlenecks across biomedical R&D.",
+      "keyFeatures": [
+        "Generates execution-ready experimental protocols and refines them based on context",
+        "Optimizes clinical study frameworks with regulatory-readiness features",
+        "Harmonizes lab data across LIMS, ERP, CRM, and lab instruments",
+        "Positions itself across discovery, development, AND clinical planning (broader scope than a pure lab-protocol tool)"
+      ],
+      "recentNews": "Marketing emphasis in 2026 on being a single unifying layer across fragmented biomedical R&D tools rather than a point solution.",
+      "fundingKnown": null,
+      "sources": [
+        [
+          "ThinkBio.Ai R-COP product page",
+          "https://www.thinkbio.ai/r-cop/"
+        ]
+      ],
+      "asOf": "2026-05-14"
+    },
+    "pendingUpdate": null,
+    "history": []
+  },
+  {
+    "id": "benchling",
+    "name": "Benchling",
+    "product": "Benchling R&D cloud platform",
+    "category": "Established R&D cloud platform (broader, less AI-agent-native)",
+    "baseline": {
+      "summary": "Benchling is a mature R&D cloud platform used by 1,200+ pharma and biotech companies, covering notebook, registry, and workflow management. Less purpose-built around an AI agent that learns from failed experiments specifically, but the dominant incumbent platform Elnora would be compared against or need to integrate alongside.",
+      "keyFeatures": [
+        "Broad R&D data platform: notebook, molecular biology registry, workflow tools",
+        "Large existing customer base across pharma/biotech",
+        "AI features exist but are not centered on learning from negative/failed experimental data the way Elnora's core thesis is"
+      ],
+      "recentNews": "Continues to be the default R&D data infrastructure choice for many biotech/pharma companies; competitive pressure is less about AI-agent sophistication and more about being the incumbent system of record.",
+      "fundingKnown": null,
+      "sources": [
+        [
+          "Benchling company overview (via prior research)",
+          "https://www.benchling.com"
+        ]
+      ],
+      "asOf": "2026-01-01"
+    },
+    "pendingUpdate": null,
+    "history": []
+  }
+]
