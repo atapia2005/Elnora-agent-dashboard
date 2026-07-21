@@ -133,11 +133,23 @@ function setFindingStatus(id, status) {
 
 const DIGEST_STATE_PATH = path.join(__dirname, "..", "data", "digestState.json");
 
+// Self-healing: if this file is ever missing (e.g. it wasn't included when
+// the project was copied/deployed somewhere new), create it with a sensible
+// default instead of crashing. This was a real bug once already -- the file
+// existed in development but never got added to the deployed copy.
+function ensureDigestStateFile() {
+  if (!fs.existsSync(DIGEST_STATE_PATH)) {
+    writeJSON(DIGEST_STATE_PATH, { lastDigestAt: null });
+  }
+}
+
 function getLastDigestAt() {
+  ensureDigestStateFile();
   return readJSON(DIGEST_STATE_PATH).lastDigestAt;
 }
 
 function setLastDigestAt(isoString) {
+  ensureDigestStateFile();
   writeJSON(DIGEST_STATE_PATH, { lastDigestAt: isoString });
 }
 
