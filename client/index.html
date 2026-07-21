@@ -103,7 +103,7 @@
 <script type="text/babel">
 const { useState, useEffect, useCallback } = React;
 
-const API_BASE = window.ELNORA_API_BASE || "https://elnora-agent-dashboard.onrender.com/api";
+const API_BASE = window.ELNORA_API_BASE || "http://localhost:4001/api";
 
 function authHeaders(code) {
   return code ? { "x-dashboard-code": code } : {};
@@ -135,7 +135,7 @@ function CompanyCard({ company, onRefresh, onApprove, onReject, refreshing, busy
       {company.pendingUpdate && (
         <div className="pending">
           <div className="pending-head">
-            <span>Pending review \u00b7 {new Date(company.pendingUpdate.fetchedAt).toLocaleString()}</span>
+            <span>Pending review · {new Date(company.pendingUpdate.fetchedAt).toLocaleString()}</span>
             <span>{company.pendingUpdate.changes.length} change{company.pendingUpdate.changes.length!==1?"s":""}</span>
           </div>
           {company.pendingUpdate.changes.length === 0 && <div className="no-changes">No material changes found.</div>}
@@ -202,7 +202,14 @@ function App() {
   const [refreshingIds, setRefreshingIds] = useState({});
   const [busyIds, setBusyIds] = useState({});
   const [scanning, setScanning] = useState(false);
+  const [scanLimit, setScanLimit] = useState(15);
   const [lastScanSummary, setLastScanSummary] = useState(null);
+  const [includePendingInDigest, setIncludePendingInDigest] = useState(false);
+
+  function downloadDigest() {
+    const url = `${API_BASE}/digest/export?includePending=${includePendingInDigest}`;
+    window.open(url, "_blank");
+  }
 
   const loadAll = useCallback(async () => {
     try {
@@ -256,7 +263,7 @@ function App() {
   async function runScan() {
     setScanning(true); setLastScanSummary(null);
     try {
-      const res = await fetch(`${API_BASE}/findings/scan`, { method: "POST", headers: authHeaders(accessCode) });
+      const res = await fetch(`${API_BASE}/findings/scan?limit=${scanLimit}`, { method: "POST", headers: authHeaders(accessCode) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Scan failed");
       setLastScanSummary(data);
@@ -293,7 +300,7 @@ function App() {
       <h1 className="title">The Intelligence Desk</h1>
       <p className="subtitle">
         Tracks the AI-copilot competitive set alongside a live feed of <b>negative and null results</b> from the
-        literature \u2014 the exact kind of buried data Elnora's own thesis says should be reused, not discarded.
+        literature — the exact kind of buried data Elnora's own thesis says should be reused, not discarded.
       </p>
 
       {apiStatus === "err" && (
@@ -321,6 +328,13 @@ function App() {
           </React.Fragment>
         ) : (
           <React.Fragment>
+            <span className="control-label">Batch size</span>
+            <input
+              type="number" min="5" max="100" value={scanLimit}
+              onChange={(e) => setScanLimit(Number(e.target.value))}
+              style={{ width: 60, background:"transparent", border:"1px solid var(--line)", borderRadius:7,
+                       color:"var(--ink)", padding:"6px 8px", fontSize:13, fontFamily:"'IBM Plex Mono', monospace" }}
+            />
             <button className="btn primary" onClick={runScan} disabled={scanning || apiStatus !== "ok"}>
               {scanning ? "Scanning literature\u2026" : "Scan for new negative-data findings"}
             </button>
@@ -356,11 +370,26 @@ function App() {
         )
       )}
 
+      <div className="controls" style={{marginTop: 8}}>
+        <span className="control-label">Digest</span>
+        <label style={{display:"flex", alignItems:"center", gap:6, fontSize:13, color:"var(--muted)", cursor:"pointer"}}>
+          <input type="checkbox" checked={includePendingInDigest}
+                 onChange={(e) => setIncludePendingInDigest(e.target.checked)} />
+          Include pending (not yet reviewed) items
+        </label>
+        <button className="btn primary" onClick={downloadDigest} disabled={apiStatus !== "ok"}>
+          Download PDF Digest
+        </button>
+        <span className="note" style={{margin:0}}>
+          Covers approved items since your last export{includePendingInDigest ? " \u2014 plus everything currently awaiting review" : ""}.
+        </span>
+      </div>
+
       <footer>
         <b>How this works:</b> "Scan" searches Europe PMC (free, covers bioRxiv and PubMed) for recent papers whose
         language suggests a negative or null result in Elnora's focus areas, then uses Claude to read each abstract,
         confirm it's a genuine negative finding, and extract structured fields. Approving a finding marks it ready
-        for pipeline integration and (if configured) forwards it to a webhook \u2014 see the project README for how to
+        for pipeline integration and (if configured) forwards it to a webhook — see the project README for how to
         point that at a real ingestion endpoint.
       </footer>
     </div>
