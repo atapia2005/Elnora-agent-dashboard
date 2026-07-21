@@ -127,7 +127,22 @@ function setFindingStatus(id, status) {
   return finding;
 }
 
+// ---------- Digest state ----------
+// Tracks when the last PDF digest was generated, so "since last export"
+// has a real reference point instead of re-including everything each time.
+
+const DIGEST_STATE_PATH = path.join(__dirname, "..", "data", "digestState.json");
+
+function getLastDigestAt() {
+  return readJSON(DIGEST_STATE_PATH).lastDigestAt;
+}
+
+function setLastDigestAt(isoString) {
+  writeJSON(DIGEST_STATE_PATH, { lastDigestAt: isoString });
+}
+
 module.exports = {
   getAllCompanies, getCompany, applyCompanyRefresh, approveCompany, rejectCompany,
   getAllFindings, addFindings, setFindingStatus,
+  getLastDigestAt, setLastDigestAt,
 };

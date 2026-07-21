@@ -6,6 +6,7 @@ const store = require("./services/store");
 const { refreshCompany } = require("./services/claudeAgent");
 const { scanForNegativeData } = require("./services/negativeDataAgent");
 const { toExportPayload, forwardToWebhook } = require("./services/exportService");
+const { buildDigest } = require("./services/digestService");
 
 const app = express();
 app.use(express.json());
@@ -114,6 +115,27 @@ app.get("/api/findings/:id/export", (req, res) => {
 });
 
 app.get("/api/health", (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
+
+// ---------- Digest export ----------
+// No access code required here -- this only reads already-approved local
+// data and generates a PDF; it never calls Claude or costs anything, unlike
+// the refresh/scan endpoints above.
+app.get("/api/digest/export", (req, res) => {
+  try {
+    const includePending = req.query.includePending === "true";
+    const companies = store.getAllCompanies();
+    const findings = store.getAllFindings();
+    const lastDigestAt = store.getLastDigestAt();
+
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename="elnora-digest-${new Date().toISOString().slice(0, 10)}.pdf"`);
+
+    buildDigest({ companies, findings, lastDigestAt, includePending }, res);
+    store.setLastDigestAt(new Date().toISOString());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {

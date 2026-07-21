@@ -204,6 +204,12 @@ function App() {
   const [scanning, setScanning] = useState(false);
   const [scanLimit, setScanLimit] = useState(15);
   const [lastScanSummary, setLastScanSummary] = useState(null);
+  const [includePendingInDigest, setIncludePendingInDigest] = useState(false);
+
+  function downloadDigest() {
+    const url = `${API_BASE}/digest/export?includePending=${includePendingInDigest}`;
+    window.open(url, "_blank");
+  }
 
   const loadAll = useCallback(async () => {
     try {
@@ -363,6 +369,21 @@ function App() {
           </div>
         )
       )}
+
+      <div className="controls" style={{marginTop: 8}}>
+        <span className="control-label">Digest</span>
+        <label style={{display:"flex", alignItems:"center", gap:6, fontSize:13, color:"var(--muted)", cursor:"pointer"}}>
+          <input type="checkbox" checked={includePendingInDigest}
+                 onChange={(e) => setIncludePendingInDigest(e.target.checked)} />
+          Include pending (not yet reviewed) items
+        </label>
+        <button className="btn primary" onClick={downloadDigest} disabled={apiStatus !== "ok"}>
+          Download PDF Digest
+        </button>
+        <span className="note" style={{margin:0}}>
+          Covers approved items since your last export{includePendingInDigest ? " \u2014 plus everything currently awaiting review" : ""}.
+        </span>
+      </div>
 
       <footer>
         <b>How this works:</b> "Scan" searches Europe PMC (free, covers bioRxiv and PubMed) for recent papers whose
